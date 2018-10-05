@@ -1,0 +1,5 @@
+Este proyecto ya tiene construido bajo el modelo MVC, en PHP+MySQL+BootStrap+HTML5.
++Log de transacciones
++Perfiles de usuarios
++Rastreo de IP
++Aumento de seguridad con SP - Stored Procedures

@@ -1,0 +1,9 @@
+vendedor@gmail.com  -- Comercial
+director@gmail.com -- DirectorComercial
+administrador@gmail.com  -- Gerente
+
+Crear usuario para controlar pagos y administrar las empresas.
+
+
+Claves;
+Xerox111
