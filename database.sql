@@ -34,60 +34,8 @@ CREATE TABLE `tblCategoria` (
   `actualizadoEn` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblCategoria_antes_insert
-BEFORE INSERT
-   ON tblCategoria FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.creadoPor = usuario;
-   SET NEW.creadoEn = SYSDATE();
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblCategoria_antes_update
-BEFORE UPDATE
-   ON tblCategoria FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tblCliente`
@@ -235,7 +183,7 @@ CREATE TABLE `tblEquipo` (
   KEY `FK_tblEquipo_marcaId` (`marcaId`),
   CONSTRAINT `FK_tblEquipo_categoriaId` FOREIGN KEY (`categoriaId`) REFERENCES `tblCategoria` (`id`),
   CONSTRAINT `FK_tblEquipo_marcaId` FOREIGN KEY (`marcaId`) REFERENCES `tblMarca` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -246,18 +194,18 @@ CREATE TABLE `tblEquipo` (
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblEquipo_antes_insert
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER trigger_tblEquipo_antes_insert
 BEFORE INSERT
    ON tblEquipo FOR EACH ROW
 BEGIN
-   -- variable declarations
+   
    DECLARE usuario VARCHAR(50);
    SELECT USER() INTO usuario;
    SET NEW.creadoPor = usuario;
    SET NEW.creadoEn = SYSDATE();
    SET NEW.actualizadoPor = USER();
    SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
+   
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -273,16 +221,16 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblEquipo_antes_update
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER trigger_tblEquipo_antes_update
 BEFORE UPDATE
    ON tblEquipo FOR EACH ROW
 BEGIN
-   -- variable declarations
+   
    DECLARE usuario VARCHAR(50);
    SELECT USER() INTO usuario;
    SET NEW.actualizadoPor = USER();
    SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
+   
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -310,83 +258,6 @@ CREATE TABLE `tblEquipoXEvento` (
   CONSTRAINT `FK_tblEquipoXEvento_eventoId` FOREIGN KEY (`eventoId`) REFERENCES `tblEvento` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblEquipoXEvento_antes_insert
-BEFORE INSERT
-   ON tblEquipoXEvento FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.creadoPor = usuario;
-   SET NEW.creadoEn = SYSDATE();
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblEquipoXEvento_antes_update
-BEFORE UPDATE
-   ON tblEquipoXEvento FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblEquipoXEvento_despues_delete
-AFTER DELETE
-	ON tblEquipoXEvento FOR EACH ROW
-BEGIN
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   INSERT INTO tblHistoricoEquipoXEvento
-    (equipoId, eventoId, creadoPor,creadoEn, actualizadoPor, actualizadoEn, eliminadoPor, eliminadoEn)
-    VALUES
-    (OLD.equipoId, OLD.eventoId, OLD.creadoPor, OLD.creadoEn, OLD.actualizadoPor, OLD.actualizadoEn, usuario, SYSDATE());
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tblEvento`
@@ -483,58 +354,6 @@ CREATE TABLE `tblMantenimiento` (
   CONSTRAINT `FK_tblMantenimiento_equipoId` FOREIGN KEY (`equipoId`) REFERENCES `tblEquipo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblMantenimiento_antes_insert
-BEFORE INSERT
-   ON tblMantenimiento FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.creadoPor = usuario;
-   SET NEW.creadoEn = SYSDATE();
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblMantenimiento_antes_update
-BEFORE UPDATE
-   ON tblMantenimiento FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tblMarca`
@@ -556,58 +375,6 @@ CREATE TABLE `tblMarca` (
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblMarca_antes_insert
-BEFORE INSERT
-   ON tblMarca FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.creadoPor = usuario;
-   SET NEW.creadoEn = SYSDATE();
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`skip-grants user`@`skip-grants host`*/ /*!50003 TRIGGER trigger_tblMarca_antes_update
-BEFORE UPDATE
-   ON tblMarca FOR EACH ROW
-BEGIN
-   -- variable declarations
-   DECLARE usuario VARCHAR(50);
-   SELECT USER() INTO usuario;
-   SET NEW.actualizadoPor = USER();
-   SET NEW.actualizadoEn = SYSDATE();
-   -- trigger code
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tblNormatividadLaboral`
@@ -660,16 +427,79 @@ CREATE TABLE `tblTareaXEmpleado` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `tbl_cliente`
+--
+
+DROP TABLE IF EXISTS `tbl_cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_cliente` (
+  `int_documento_cli` int(11) NOT NULL,
+  `var_nombre_cli` varchar(900) NOT NULL,
+  `var_apellido_cli` varchar(900) NOT NULL,
+  `var_direccion_cli` varchar(900) NOT NULL,
+  `int_telefono1_cli` int(11) NOT NULL,
+  `int_telefono2_cli` int(11) DEFAULT NULL,
+  `int_celular_cli` bigint(11) NOT NULL,
+  `var_email_cli` varchar(900) NOT NULL,
+  `var_observaciones_cli` text,
+  `int_documento_use` int(11) NOT NULL,
+  PRIMARY KEY (`int_documento_cli`) USING BTREE,
+  KEY `FK_CLIENTE_1` (`int_documento_use`),
+  CONSTRAINT `tbl_cliente_ibfk_1` FOREIGN KEY (`int_documento_use`) REFERENCES `tbl_usuario` (`int_documento_use`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_log`
+--
+
+DROP TABLE IF EXISTS `tbl_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_log` (
+  `int_id_log` int(11) NOT NULL AUTO_INCREMENT,
+  `int_documento_log` int(11) NOT NULL,
+  `var_email_log` varchar(900) NOT NULL,
+  `var_nombre_log` varchar(900) NOT NULL,
+  `var_acion_log` text NOT NULL,
+  `var_IPreal_log` varchar(900) NOT NULL,
+  `var_ipscript_log` varchar(900) NOT NULL,
+  `var_ipusuario_log` varchar(900) NOT NULL,
+  `date_fecha_log` datetime NOT NULL,
+  PRIMARY KEY (`int_id_log`),
+  KEY `FK_LOG_1` (`int_documento_log`),
+  CONSTRAINT `tbl_log_ibfk_1` FOREIGN KEY (`int_documento_log`) REFERENCES `tbl_usuario` (`int_documento_use`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_usuario`
+--
+
+DROP TABLE IF EXISTS `tbl_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_usuario` (
+  `int_documento_use` int(11) NOT NULL,
+  `var_nombre_use` varchar(900) NOT NULL,
+  `var_apellido_use` varchar(900) NOT NULL,
+  `int_telefono_use` int(11) NOT NULL,
+  `int_celular_use` bigint(11) NOT NULL,
+  `var_email_use` varchar(700) NOT NULL,
+  `var_password_use` varchar(900) NOT NULL,
+  `var_estado_use` varchar(200) NOT NULL,
+  `date_fecha_inicio_use` date NOT NULL,
+  `var_role_use` varchar(900) NOT NULL,
+  PRIMARY KEY (`int_documento_use`),
+  UNIQUE KEY `UNIQUE_USUARIO_1` (`var_email_use`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping routines for database 'inventario_dos'
 --
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- insufficient privileges to SHOW CREATE PROCEDURE `sp_igreso_usuario`
+-- does juan have permissions on mysql.proc?
 
--- Dump completed on 2018-10-01 21:21:47
