@@ -12,6 +12,7 @@
 <script src="view/assets/datatable/js/dataTables.bootstrap.js"></script>
 <!-- Archivos necesarios de JS -->
 <script type="text/javascript" src=view/js/script.js></script>
+<script type="text/javascript" src=view/js/cargaControlador.js></script>
 <!-- Archivos necesarios para Bootstrap -->
 <script type="text/javascript" src="view/assets/bootstrap/dist/js/bootstrap.min.js" ></script>
 <!-- Archivos necesarios material design bootstrap JS -->
